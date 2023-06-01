@@ -97,8 +97,8 @@ int main(){
     std::cin >> user_port;
     Client client(user_port);
     client.start();
-
-    while(true){
+    bool quit = false;
+    while(!quit){
         std::cout << "> ";
         char* cmd = new char;
         std::cin >> cmd;
@@ -144,7 +144,7 @@ int main(){
         else if(!strcmp(cmd, (char*)"exit")){
             std::cout << "[~]| Exiting\n";
             client.stop();
-            break;
+            quit = true;
         }
         else std::cout << "[~]| Unknown command\n";
         delete cmd;
